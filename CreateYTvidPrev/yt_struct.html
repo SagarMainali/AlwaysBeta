@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="yt_struct.css">
+        <title>abcd</title>
+    </head>
+    <body>
+        <div id="container">
+            <div id="upper">
+                <div id="main"></div>
+            </div>
+            <div id="lower"></div>
+        </div>
+        <script>
+            //when hovering
+            document.getElementById('upper').addEventListener('mouseover', hoverin);
+            function hoverin(){
+                document.getElementById('container').style = 'transform: scale(1.2)';
+                document.getElementById('main').style = 'display: inline';
+                setTimeout(()=>{document.getElementById('main').style = 'display: hidden';}, 1000);
+                document.getElementById('container').style.transitionDelay= '1000ms';
+            }
+
+            //when hovering out
+            document.getElementById('upper').addEventListener('mouseout', hoverout);
+            function hoverout(){
+                document.getElementById('container').style ='transform: scale(1)';
+                document.getElementById('main').style = 'display: hidden';
+            }
+        </script>
+    </body>
+</html>
