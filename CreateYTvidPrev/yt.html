@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ytStyle.css">
+    <title>ytVideoPrev</title>
+</head>
+
+<body>
+    <div class="box" id="container">
+        <div class="content" id="upper">
+            <img src="landscape.jpg" alt="nature">
+            <span class="abs length">1:35</span>
+            <span class="abs info" id="main">Keep hovering to play</span>
+            <div class="line" id="flow"></div>
+        </div>
+        <div class="desc">
+            <div class="logo">
+                <img src="landscape.jpg">
+            </div>
+            <div class="infos">
+                <span class="title">Nature is beautiful</span>
+                <span class="ch_name"><a href="#">Traveller Joe</a></span>
+                <span class="views">147k views</span>
+                <span class="time">3 years ago</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        //when hovering
+        document.getElementById('upper').addEventListener('mouseover', hoverin);
+            function hoverin(){
+                document.getElementById('container').style = 'transform: scale(1.2)';
+                document.getElementById('container').style.transitionDelay= '1000ms';
+                document.getElementById('main').style = 'display: inline';
+                setTimeout(()=>{document.getElementById('main').style = 'display: hidden';}, 1000);
+                setTimeout(()=>{document.getElementById('flow').style = 'display: block';}, 1000);
+            }
+
+        //when hovering out
+        document.getElementById('upper').addEventListener('mouseout', hoverout);
+            function hoverout(){
+                document.getElementById('container').style ='transform: scale(1)';
+                document.getElementById('main').style = 'display: hidden';
+                document.getElementById('flow').style.display = 'none';
+            }
+    </script>
+</body>    
+
+</html>
