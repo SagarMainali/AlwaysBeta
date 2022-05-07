@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>abcd</title>
+        <style>
+            body{
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #F0F8FF;
+            }
+            #container{
+                height: 285px;
+                width: 390px;
+                border: 2px solid #CD5C5C;
+                padding: 2px; 
+            }
+            #container:hover{
+                cursor: pointer;
+            }
+            #upper{
+                width: 100%;
+                height: 70%;
+                background: #008080;
+                margin-bottom: 1px;
+                position: relative;
+            }
+            #main{
+                height: 20px;
+                width: 80px;
+                background: #00CED1;
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                display: none;
+            }
+            #lower{
+                width: 100%;
+                height: 30%;
+                background: #778899;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="upper">
+                <div id="main"></div>
+            </div>
+            <div id="lower"></div>
+        </div>
+        <script>
+            //when hovering
+            document.getElementById('upper').addEventListener('mouseover', hoverin);
+            function hoverin(){
+                document.getElementById('container').style = 'transform: scale(1.2)';
+                document.getElementById('main').style = 'display: inline';
+                setTimeout(()=>{document.getElementById('main').style = 'display: hidden';}, 1000);
+                document.getElementById('container').style.transitionDelay= '1000ms';
+            }
+
+            //when hovering out
+            document.getElementById('upper').addEventListener('mouseout', hoverout);
+            function hoverout(){
+                document.getElementById('container').style ='transform: scale(1)';
+                document.getElementById('main').style = 'display: hidden';
+            }
+            
+        </script>
+    </body>
+</html>

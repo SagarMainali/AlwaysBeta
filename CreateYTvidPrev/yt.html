@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ytVideoPrev</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Roboto, Arial, sans-serif;
+        }
+
+        body{
+            background-color: #2F4F4F;
+        }
+        
+        .box {
+            background:rgba(0, 0, 0, 0.8);
+            width: 390px;
+            height: 285px;
+            margin: 150px auto 0;
+            transition: linear 190ms;
+            font-size: 20px;
+        }
+        
+        .box:hover{
+            cursor: pointer;
+        }
+
+        .content{
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .content img {
+            width: 100%;
+        }
+
+        .line{
+            height: 2px;
+            width: 390px;
+            position: absolute;
+            background: white;
+            bottom: 2.5px;
+            display: none;
+        }
+
+        .line::after{
+            height: 2px;
+            width: 390px;
+            background: red;
+            content: "";
+            position: absolute;
+            animation-duration: 10s;
+            animation-name: move;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes move {
+            0% {left: -100%; top:0px;}
+            100% {left: 0%; top:0px;}
+        }
+
+        /* .box:hover .pb{
+            display: block;
+        } */
+
+        .abs{
+            position: absolute;
+            color: white;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2px 7px;
+            border-radius: 4px; 
+            bottom: 6px;   
+            right: 6px;
+        }
+
+        .length{
+            font-size: 14px;
+        }
+
+        .info{
+            display: none;
+            font-size: 13px;
+        }
+
+        .box:hover .length{
+            display: none;
+        }
+
+        .logo{
+            margin-right: 10px;
+        }
+
+        .logo img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            float: left;
+        }
+
+        .desc {
+            display: flex;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        .title {
+            margin-top: 2px;
+            color: white;
+            font-size: 15px;
+            display: block;
+        }
+
+        .ch_name {
+            margin-top: 8px;
+            font-size: 12px;
+            float: none;
+            display: block;
+        }
+
+        a{
+            text-decoration: none;
+            color: rgb(200, 200, 200);
+        }
+
+        .views,
+        .time {
+            color: rgb(200, 200, 200);
+            font-size: 12px;
+        }
+
+        /* .box:hover .info{
+            display: inline;
+            this is done through js
+        } */ 
+
+    </style>
+</head>
+
+<body>
+    <div class="box" id="container">
+        <div class="content" id="upper">
+            <img src="landscape.jpg" alt="nature">
+            <span class="abs length">1:35</span>
+            <span class="abs info" id="main">Keep hovering to play</span>
+            <div class="line" id="flow"></div>
+        </div>
+        <div class="desc">
+            <div class="logo">
+                <img src="landscape.jpg">
+            </div>
+            <div class="infos">
+                <span class="title">Nature is beautiful</span>
+                <span class="ch_name"><a href="#">Traveller Joe</a></span>
+                <span class="views">147k views</span>
+                <span class="time">3 years ago</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        //when hovering
+        document.getElementById('upper').addEventListener('mouseover', hoverin);
+            function hoverin(){
+                document.getElementById('container').style = 'transform: scale(1.2)';
+                document.getElementById('container').style.transitionDelay= '1000ms';
+                document.getElementById('main').style = 'display: inline';
+                setTimeout(()=>{document.getElementById('main').style = 'display: hidden';}, 1000);
+                setTimeout(()=>{document.getElementById('flow').style = 'display: block';}, 1000);
+            }
+
+        //when hovering out
+        document.getElementById('upper').addEventListener('mouseout', hoverout);
+            function hoverout(){
+                document.getElementById('container').style ='transform: scale(1)';
+                document.getElementById('main').style = 'display: hidden';
+                document.getElementById('flow').style.display = 'none';
+            }
+    </script>
+</body>
+
+</html>
